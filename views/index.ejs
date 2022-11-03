@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>My app</title>
+  </head>
+  <body>
+    <h1>My web page</h1>
+
+    <!-- we can put any JS in the middle and whatever the JS evaluates to, we will see that on the html page -->
+    <%= %>
+
+    <!-- this will evaulate the JS, but won't actually put anything in the actual html page for us -->
+    <% %>
+
+    <!-- start -->
+    <ul>
+      <% for (let i = 0; i < numberOfIterations; i++){ %>
+      <li><%= i%></li>
+      <%} %>
+    </ul>
+
+    <h2><%= Date() %></h2>
+    <img src="/200.jpg" alt="" />
+  </body>
+</html>
