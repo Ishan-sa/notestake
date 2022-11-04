@@ -1,3 +1,7 @@
+const mysql = require('mysql');
+const express = require('express');
+const app = express();
+
 const notes = [
     {
         id: 1,
@@ -13,6 +17,29 @@ const notes = [
     },
 ]
 
+// Create connection
+const db = mysql.createConnection({
+    host : '127.0.0.1',
+    user : 'root',
+    password : '',
+    // database : 'notestake'
+});
+
+// Connect
+db.connect((err) => {
+    if (err) throw err;
+    console.log('Connected to the Matrix');
+});
+
+//Create DB
+app.get('/createDB',(req, res) =>{
+    let sql = 'CREATE DATABSE notestake';
+    db.query(sql, (err, result) =>{
+        if (err) throw err;
+        console.log(result);
+        res.send('Database Created');
+    })
+})
 
 
 function getNotes() {
@@ -55,3 +82,6 @@ function deleteNote() {
 
 }
 exports.deleteNote = deleteNote;
+
+
+
