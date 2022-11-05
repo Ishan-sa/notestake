@@ -12,5 +12,9 @@
     <p><%= note.contents %>...</p>
     <p><%= new Date (note.timeStamp) %></p>
     <a href="/notes">Back</a>
+    
+    <form action="/notes/1/delete" method="post">
+      <button type="submit">Delete Note</button>
+    </form>
   </body>
 </html>
