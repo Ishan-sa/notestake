@@ -6,8 +6,9 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.render("index.ejs", {
-        numberOfIterations: 50,
+    const notes = database.getNotes();
+    res.render("notes.ejs", {
+        notes
     });
 })
 
