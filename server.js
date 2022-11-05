@@ -44,6 +44,12 @@ app.post("/createNote", (req, res) => {
     res.redirect(`/notes`);
 });
 
+app.post("/notes/:id/delete", (req, res) => {
+    const id = +req.params.id
+    database.deleteNote(id)
+    res.redirect(`/notes`);
+})
+
 
 // app.post("/notes", (req, res) => {
 //     const data = req.body;
