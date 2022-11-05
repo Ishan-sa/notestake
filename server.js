@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
 app.get("/notes", (req, res) => {
     const notes = database.getNotes();
-    res.render("notes", {
+    res.render("notes.ejs", {
         notes
     });
 });
@@ -32,30 +32,33 @@ app.get("/notes/:id", (req, res) => {
     res.render("singleNote.ejs", {
         note
     })
-    res.send(note);
+    // res.send(note);
 })
 
 app.get("/createNote", (req, res) => {
     res.render("createNote.ejs");
 });
 
-app.post("/createNote", (req, res) => {
-    newNote = database.addNote(req.body.title, req.body.contents);
-    res.redirect(`/notes`);
-});
+app.post("/notes", (req, res) => {
+    const data = req.body;
+    database.addNote(data);
+    res.redirect("/notes");
+})
+
+
+// app.post("/createNote", (req, res) => {
+//     newNote = database.addNote(req.body.title, req.body.contents);
+//     res.redirect(`/notes`);
+// });
 
 app.post("/notes/:id/delete", (req, res) => {
     const id = +req.params.id
     database.deleteNote(id)
-    res.redirect(`/notes`);
+    res.redirect("/notes");
 })
 
 
-// app.post("/notes", (req, res) => {
-//     const data = req.body;
-//     database.addNote(data);
-//     res.redirect("/notes");
-// })
+
 
 app.use(express.static('public'));
 
