@@ -6,15 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
     <title>Note</title>
+
+    <style>
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .content {
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        color: #d5d5d5;
+      }
+      button {
+        color: #333;
+      }
+      .counter {
+        display: flex;
+        gap: 1rem;
+      }
+    </style>
+    <script>
+      const content = document.getElementsByClassName("content");
+      const incrementBtn = document.querySelector(".incrementBtn");
+      const decrementBtn = document.querySelector(".decrementBtn");
+      const counter = document.querySelector(".counter");
+      function incrementCounter() {
+        // incrementBtn.addEventListener("click", () => {
+        //   content.style.cssText = "font-size: 1.5rem";
+        // });
+        // counter.innerText = parseInt(counter.innerText) + 1;
+        content.style.cssText = "font-size: 1.5rem";
+      }
+      incrementCounter();
+    </script>
   </head>
   <body>
-    <h1><%= note.title %></h1>
-    <p><%= note.contents %>...</p>
-    <p><%= new Date (note.timeStamp) %></p>
-    <a href="/notes">Back</a>
-    
-    <form action="/notes/1/delete" method="post">
-      <button type="submit">Delete Note</button>
-    </form>
+    <div class="parentContainer">
+      <!-- <div class="counter">
+          <button class="decrement">-</button>
+          <p>font size</p>
+          <button class="increment" onclick="document.querySelector('.content').style.fontSize = '1.5rem' ">+</button>
+        </div> -->
+      <h1><%= note.title %></h1>
+      <p class="content"><%= note.contents %></p>
+      <p><%= new Date (note.timeStamp) %></p>
+      <a href="/notes">Back</a>
+
+      <form action="/notes/1/delete" method="post">
+        <button type="submit">Delete Note</button>
+      </form>
+    </div>
   </body>
 </html>
