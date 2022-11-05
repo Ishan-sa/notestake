@@ -13,7 +13,7 @@ let notes = [
     },
 ]
 
-
+let currentId = 3;
 
 function getNotes() {
     return notes;
@@ -22,32 +22,36 @@ exports.getNotes = getNotes
 
 
 function getNote(id) {
-    return notes.filter((note) => note.id === id);
+    return notes.find((note) => note.id === id);
 }
 exports.getNote = getNote;
 
 
 
-// function addNote(note) {
-//     notes.push({
-//         ...notes,
-//         id: notes.length + 1,
-//         timeStamp: Date.now()
-//     })
-// }
-
-function addNote(title, contents) {
-    id = notes.length + 1;
-    let note = {
-        id,
-        title,
-        contents,
+function addNote(note) {
+    notes.push({
+        ...note,
+        id: currentId,
         timeStamp: Date.now()
-    }
-    notes[id] = note;
-    return note
+    });
+    currentId++
 }
 exports.addNote = addNote;
+
+
+
+
+// function addNote(title, contents) {
+//     id = notes.length + 1;
+//     let note = {
+//         id,
+//         title,
+//         contents,
+//         timeStamp: Date.now()
+//     }
+//     notes[id] = note;
+//     return note
+// }
 
 
 
