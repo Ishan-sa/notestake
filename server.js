@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 })
 
 
+
 app.get("/notes", (req, res) => {
     const notes = database.getNotes();
     res.render("notes.ejs", {
@@ -27,7 +28,7 @@ app.get("/notes/:id", (req, res) => {
     // finds the note from the array with the id
     const note = database.getNote(id);
     if (!note) {
-        res.status(404).render("note404.ejs")
+        res.status(404).render("error404.ejs")
         return
     }
     res.render("singleNote.ejs", {
@@ -35,6 +36,8 @@ app.get("/notes/:id", (req, res) => {
     })
     // res.send(note);
 })
+
+
 
 app.get("/createNote", (req, res) => {
     res.render("createNote.ejs");
@@ -58,7 +61,9 @@ app.post("/notes/:id/delete", (req, res) => {
     res.redirect("/notes");
 })
 
-
+app.get('*', (req, res) => {
+    res.status(404).render("error404.ejs")
+})
 
 
 app.use(express.static('public'));
