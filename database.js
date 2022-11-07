@@ -15,8 +15,11 @@ let notes = [
 
 let currentId = 3;
 
-function getNotes() {
-    return notes;
+function getNotes(searchTerm) {
+    if (!searchTerm) {
+        return notes;
+    }
+    return notes.filter(note => note.title.includes(searchTerm) || note.contents.includes(searchTerm))
 }
 exports.getNotes = getNotes
 
@@ -38,26 +41,11 @@ function addNote(note) {
 }
 exports.addNote = addNote;
 
-
-
-
-// function addNote(title, contents) {
-//     id = notes.length + 1;
-//     let note = {
-//         id,
-//         title,
-//         contents,
-//         timeStamp: Date.now()
-//     }
-//     notes[id] = note;
-//     return note
-// }
-
-
-
 function deleteNote(id) {
-    notes = notes.filter(note => {
+    // filter will create a new array from an existing array but only where items match some sort of criteria
+    notes = notes.filter((note) =>
+        // so as long as the id does not equal the other id, it can exist in the new array, but if the id does equal the notes id, then it won't be added in the new array
         note.id !== id
-    })
+    )
 }
 exports.deleteNote = deleteNote;
