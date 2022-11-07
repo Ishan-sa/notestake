@@ -6,6 +6,8 @@ const database = require('./database');
 app.set("view engine", "ejs"); // this is required to use ejs templates
 app.use(express.urlencoded({ extended: true })); // body parser middleware
 app.use(express.static('public')); // static files middleware
+// var favicon = require('serve-favicon');
+// app.use(favicon(__dirname + '/images/logo.png'));
 /* MIDDLEWARE ENDS */
 
 
