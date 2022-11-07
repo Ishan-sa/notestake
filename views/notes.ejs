@@ -51,11 +51,20 @@
           </ul>
           <div class="searchContainer">
             <!-- <i class="fa-regular fa-magnifying-glass"></i> -->
-            <img
-              class="searchIcon"
-              src="https://img.icons8.com/ios/50/979797/search--v1.png"
-            />
-            <input type="search" class="searchBar" />
+            <form action="/notes" method="GET" class="searchForm">
+              <img
+                class="searchIcon"
+                src="https://img.icons8.com/ios/50/979797/search--v1.png"
+              />
+              <label for="searchInput">Search</label>
+              <input
+                type="text"
+                class="searchBar"
+                name="searchTerm"
+                id="searchInput"
+              />
+              <button>Search</button>
+            </form>
           </div>
           <div>
             <a href="/createNote">
