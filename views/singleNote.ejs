@@ -19,44 +19,27 @@
         margin-bottom: 1rem;
         color: #d5d5d5;
       }
-      button {
-        color: #333;
-      }
-      .counter {
+      .deleteAndBackCont {
         display: flex;
-        gap: 1rem;
+        align-items: center;
+        gap: 20rem;
+        padding-top: 2rem;
       }
     </style>
-    <script>
-      const content = document.getElementsByClassName("content");
-      const incrementBtn = document.querySelector(".incrementBtn");
-      const decrementBtn = document.querySelector(".decrementBtn");
-      const counter = document.querySelector(".counter");
-      function incrementCounter() {
-        // incrementBtn.addEventListener("click", () => {
-        //   content.style.cssText = "font-size: 1.5rem";
-        // });
-        // counter.innerText = parseInt(counter.innerText) + 1;
-        content.style.cssText = "font-size: 1.5rem";
-      }
-      incrementCounter();
-    </script>
   </head>
   <body>
     <div class="parentContainer">
-      <!-- <div class="counter">
-          <button class="decrement">-</button>
-          <p>font size</p>
-          <button class="increment" onclick="document.querySelector('.content').style.fontSize = '1.5rem' ">+</button>
-        </div> -->
       <h1><%= note.title %></h1>
       <p class="content"><%= note.contents %></p>
       <p><%= new Date (note.timeStamp) %></p>
-      <a href="/notes">Back</a>
-
-      <form action="/notes/<%= note.id %> /delete" method="post">
-        <button type="submit">Delete Note</button>
-      </form>
+      <div class="deleteAndBackCont">
+        <a href="/notes">
+          <button class="backNoteBtn">Back</button>
+        </a>
+        <form action="/notes/<%= note.id %> /delete" method="post">
+          <button type="submit" class="primaryNoteBtn">Delete Note</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
